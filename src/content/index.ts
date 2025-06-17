@@ -1,4 +1,5 @@
 import { MetaData, HeroSection, Product, Testimonial, ContactSection, FooterData, Header } from './types'
+import { getAvatarUrl } from '@/utils/classnames'
 
 export const metadata: MetaData = {
   title: 'Coffee Lab | Уютная кофейня в центре города',
@@ -66,21 +67,21 @@ export const testimonials: Testimonial[] = [
     name: 'Анна К.',
     role: 'Постоянный гость',
     text: 'Лучший кофе в городе! Особенно люблю их авторский латте с карамелью. Атмосфера очень уютная, идеальное место для работы и встреч с друзьями.',
-    image: '/images/testimonials/testimonial-user-01.webp',
+    image: getAvatarUrl('Анна К.', 'female'),
     photo: '/images/product/img-product-coffee-01.png',
   },
   {
     name: 'Михаил П.',
     role: 'Фрилансер',
     text: 'Отличное место для работы. Быстрый Wi-Fi, вкусный кофе и приятная музыка. Бариста всегда готовы помочь с выбором напитка.',
-    image: '/images/testimonials/testimonial-user-02.webp',
+    image: getAvatarUrl('Михаил П.', 'male'),
     photo: '/images/product/img-product-atmosphere-01.png',
   },
   {
     name: 'Елена С.',
     role: 'Фуд-блогер',
     text: 'Прекрасная кофейня с внимательным персоналом. Особенно нравится их сезонное меню и десерты. Рекомендую всем!',
-    image: '/images/testimonials/testimonial-user-03.webp',
+    image: getAvatarUrl('Елена С.', 'female'),
     photo: '/images/product/img-product-desserts-01.png',
   },
 ]
