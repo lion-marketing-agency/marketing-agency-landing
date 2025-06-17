@@ -1,102 +1,150 @@
 'use client'
 
+import { useState, useRef } from 'react'
 import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { testimonials } from '@/content'
 
 export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start']
-  })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8])
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index)
+  }
 
   return (
-    <section 
-      id="testimonials" 
-      ref={containerRef}
-      className="min-h-[calc(100vh-4rem)] flex items-center bg-background/50 relative overflow-hidden"
-    >
-      {/* Фоновые элементы */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-foreground/5 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,_var(--tw-gradient-stops))] from-background/50 via-transparent to-background/50" />
+    <section id="testimonials" className="min-h-screen flex items-center">
+      <div className="container mx-auto px-6 py-16">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-5xl md:text-6xl font-light mb-8 tracking-tight">
+              Отзывы клиентов
+            </h2>
+          </motion.div>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        <motion.div
-          style={{ opacity, scale }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            Отзывы клиентов
-          </h2>
-          <p className="text-xl text-foreground/60 max-w-3xl mx-auto">
-            Что говорят о нас те, кто уже использует наш шаблон
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative"
+          {/* Карусель с управлением по бокам */}
+          <div className="relative">
+            {/* Кнопка "Назад" слева */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:border-gray-300 transition-colors group shadow-lg"
+              aria-label="Предыдущий отзыв"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-foreground/10 to-transparent rounded-2xl transform transition-transform group-hover:scale-105" />
-              <div className="relative bg-background/50 backdrop-blur-sm rounded-2xl p-8 border border-foreground/10 hover:border-foreground/20 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="relative w-16 h-16 rounded-xl overflow-hidden">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/20 to-transparent" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-medium mb-1">{testimonial.name}</h3>
-                    <p className="text-sm text-foreground/60">{testimonial.role}</p>
-                  </div>
-                </div>
-                <div className="relative">
-                  <div className="absolute -top-4 -left-4 text-4xl text-foreground/20">"</div>
-                  <p className="text-foreground/80 leading-relaxed relative z-10">
-                    {testimonial.text}
-                  </p>
-                  <div className="absolute -bottom-4 -right-4 text-4xl text-foreground/20 transform rotate-180">"</div>
-                </div>
-                <div className="mt-6 flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-5 h-5 text-yellow-500"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              <svg className="w-6 h-6 text-gray-600 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-        {/* Дополнительный элемент дизайна */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent"
-        />
+            {/* Кнопка "Вперед" справа */}
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:border-gray-300 transition-colors group shadow-lg"
+              aria-label="Следующий отзыв"
+            >
+              <svg className="w-6 h-6 text-gray-600 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Основной слайд */}
+            <div className="relative h-[500px] md:h-[600px] mb-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <div className="bg-white rounded-2xl shadow-sm border border-gray-100 h-full overflow-hidden">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
+                      {/* Левая колонка - текст отзыва */}
+                      <div className="p-8 md:p-12 flex flex-col justify-center">
+                        <div className="flex items-start gap-6 mb-8">
+                          <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                            <Image
+                              src={testimonials[currentIndex].image}
+                              alt={testimonials[currentIndex].name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-xl font-medium mb-2 text-gray-900">
+                              {testimonials[currentIndex].name}
+                            </h3>
+                            <p className="text-gray-600 mb-3">
+                              {testimonials[currentIndex].role}
+                            </p>
+                            <div className="flex items-center gap-1">
+                              {[...Array(5)].map((_, i) => (
+                                <svg
+                                  key={i}
+                                  className="w-4 h-4 text-yellow-400"
+                                  fill="currentColor"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <blockquote className="text-lg md:text-xl text-gray-700 leading-relaxed italic">
+                          "{testimonials[currentIndex].text}"
+                        </blockquote>
+                      </div>
+
+                      {/* Правая колонка - большое изображение */}
+                      <div className="relative h-full">
+                        <Image
+                          src={testimonials[currentIndex].photo}
+                          alt={testimonials[currentIndex].name + ' — фото'}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          priority={true}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Индикаторы внизу */}
+            <div className="flex items-center justify-center gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-gray-900 w-10' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Перейти к отзыву ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

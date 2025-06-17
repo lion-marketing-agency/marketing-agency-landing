@@ -35,6 +35,7 @@ export interface Testimonial {
   role: string
   text: string
   image: string
+  photo: string
 }
 
 export interface ContactSection {

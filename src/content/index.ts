@@ -35,7 +35,7 @@ export const hero: HeroSection = {
 export const about = {
   title: 'О нашей кофейне',
   description: 'Coffee Lab — это место, где ценят качество, уют и атмосферу. Мы используем только лучшие зерна и готовим кофе с душой. Приходите за вдохновением, встречами и, конечно, за отличным кофе!',
-  image: '/images/product/img-product-about-01.webp',
+  image: '/images/product/img-product-coffee-03.png',
 }
 
 export const product: Product = {
@@ -56,7 +56,7 @@ export const product: Product = {
     {
       title: 'Уютная атмосфера',
       description: 'Теплый интерьер, мягкое освещение и приятная музыка создают идеальную атмосферу для работы, встреч с друзьями или уединенного отдыха с любимой книгой.',
-      image: '/images/product/img-product-atmosphere-01.png',
+      image: '/images/product/img-product-atmosphere-02.png',
     },
   ],
 }
@@ -67,18 +67,21 @@ export const testimonials: Testimonial[] = [
     role: 'Постоянный гость',
     text: 'Лучший кофе в городе! Особенно люблю их авторский латте с карамелью. Атмосфера очень уютная, идеальное место для работы и встреч с друзьями.',
     image: '/images/testimonials/testimonial-user-01.webp',
+    photo: '/images/product/img-product-coffee-01.png',
   },
   {
     name: 'Михаил П.',
     role: 'Фрилансер',
     text: 'Отличное место для работы. Быстрый Wi-Fi, вкусный кофе и приятная музыка. Бариста всегда готовы помочь с выбором напитка.',
     image: '/images/testimonials/testimonial-user-02.webp',
+    photo: '/images/product/img-product-atmosphere-01.png',
   },
   {
     name: 'Елена С.',
     role: 'Фуд-блогер',
     text: 'Прекрасная кофейня с внимательным персоналом. Особенно нравится их сезонное меню и десерты. Рекомендую всем!',
     image: '/images/testimonials/testimonial-user-03.webp',
+    photo: '/images/product/img-product-desserts-01.png',
   },
 ]
 

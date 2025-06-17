@@ -9,31 +9,31 @@ export default function Product() {
   const [activeFeature, setActiveFeature] = useState(0)
 
   return (
-    <section id="about" className="min-h-[calc(100vh-4rem)] flex items-center bg-background/50">
-      <div className="container mx-auto px-6 py-8">
-        <div className="max-w-6xl mx-auto">
+    <section id="about" className="min-h-screen flex items-center">
+      <div className="container mx-auto px-6 py-16">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+            <h2 className="text-5xl md:text-6xl font-light mb-8 tracking-tight">
               {product.title}
             </h2>
-            <p className="text-xl text-foreground/60 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
               {product.description}
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               key={activeFeature}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative h-[350px] lg:h-[450px] rounded-2xl overflow-hidden shadow-2xl"
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden"
             >
               <Image
                 src={product.features[activeFeature].image}
@@ -42,40 +42,49 @@ export default function Product() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6"
+              transition={{ duration: 0.6 }}
+              className="space-y-4"
             >
               {product.features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
                   onClick={() => setActiveFeature(index)}
-                  className={`flex items-start gap-5 p-5 rounded-xl border transition-all cursor-pointer ${
+                  className={`group relative p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
                     activeFeature === index
-                      ? 'bg-background/80 border-foreground/30 shadow-lg scale-105'
-                      : 'bg-background/50 border-foreground/10 hover:border-foreground/20 hover:shadow-lg'
+                      ? 'bg-white border-gray-200 shadow-sm'
+                      : 'bg-transparent border-gray-100 hover:border-gray-200 hover:bg-white/50'
                   }`}
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
-                    activeFeature === index
-                      ? 'bg-foreground/20'
-                      : 'bg-foreground/10'
-                  }`}>
-                    <span className="text-lg font-medium">{index + 1}</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
-                    <p className="text-foreground/60 leading-relaxed text-sm">{feature.description}</p>
+                  <div className="flex items-start gap-4">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                      activeFeature === index
+                        ? 'bg-gray-900 text-white'
+                        : 'bg-gray-100 text-gray-600 group-hover:bg-gray-200'
+                    }`}>
+                      <span className="text-sm font-medium">{index + 1}</span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className={`text-lg font-medium mb-2 transition-colors duration-300 ${
+                        activeFeature === index ? 'text-gray-900' : 'text-gray-700'
+                      }`}>
+                        {feature.title}
+                      </h3>
+                      <p className={`leading-relaxed transition-colors duration-300 ${
+                        activeFeature === index ? 'text-gray-600' : 'text-gray-500'
+                      }`}>
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
