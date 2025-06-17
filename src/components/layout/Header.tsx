@@ -28,9 +28,17 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className={`text-xl font-bold transition-colors ${
-            isScrolled ? 'text-gray-900' : 'text-white'
-          }`}>
+          <Link 
+            href="/" 
+            onClick={(e) => {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+              setIsMobileMenuOpen(false)
+            }}
+            className={`text-xl font-bold transition-colors cursor-pointer ${
+              isScrolled ? 'text-gray-900' : 'text-white'
+            }`}
+          >
             {header.logo}
           </Link>
 
@@ -51,7 +59,9 @@ export default function Header() {
             ))}
             <Link
               href={header.ctaLink}
-              className={`px-4 py-2 rounded-lg font-medium transition-all hover:scale-105 ${
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`px-6 py-2.5 rounded-lg font-medium transition-all hover:scale-105 hover:shadow-lg ${
                 isScrolled
                   ? 'bg-gray-900 text-white hover:bg-gray-800'
                   : 'bg-white text-gray-900 hover:bg-gray-100'
@@ -116,12 +126,13 @@ export default function Header() {
               ))}
               <Link
                 href={header.ctaLink}
-                className={`block px-4 py-2 rounded-lg font-medium text-center transition-all ${
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block px-6 py-3 rounded-lg font-medium text-center transition-all hover:shadow-lg ${
                   isScrolled
                     ? 'bg-gray-900 text-white hover:bg-gray-800'
                     : 'bg-white text-gray-900 hover:bg-gray-100'
                 }`}
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {header.ctaText}
               </Link>

@@ -2,46 +2,45 @@ import { MetaData, HeroSection, Product, Testimonial, ContactSection, FooterData
 import { getAvatarUrl } from '@/utils/classnames'
 
 export const metadata: MetaData = {
-  title: 'Coffee Lab | Уютная кофейня в центре города',
-  description: 'Откройте для себя мир изысканного кофе в нашей уютной кофейне. Свежая обжарка, авторские напитки и домашняя выпечка.',
-  keywords: ['кофейня', 'кофе', 'десерты', 'Москва', 'Coffee Lab']
+  title: 'Какао\'Мама | Уютное кафе в центре города',
+  description: 'Откройте для себя мир изысканного кофе и горячего шоколада в нашем уютном кафе. Свежая обжарка, авторские напитки и домашняя выпечка.',
+  keywords: ['кафе', 'кофе', 'какао', 'десерты', 'Тольятти', 'Какао\'Мама']
 }
 
 export const header: Header = {
-  logo: 'Coffee Lab',
+  logo: 'Какао\'Мама',
   links: [
-    { href: '#menu', title: 'Меню' },
     { href: '#about', title: 'О нас' },
-    { href: '#reviews', title: 'Отзывы' },
+    { href: '#testimonials', title: 'Отзывы' },
     { href: '#contact', title: 'Контакты' },
   ],
-  ctaText: 'Забронировать',
-  ctaLink: '#contact',
+  ctaText: 'Меню',
+  ctaLink: '/Kakaomama New Menu.pdf',
 }
 
 export const hero: HeroSection = {
-  title: 'Изысканный кофе и уютная атмосфера',
-  subtitle: 'Каждый день мы создаем идеальный кофе для вас',
+  title: 'Изысканный кофе и горячий шоколад',
+  subtitle: 'Каждый день мы создаем идеальные напитки для вас',
   backgroundImage: '/images/backgrounds/img-hero-welcome-door.png',
   primaryButton: {
     text: 'Посмотреть меню',
-    href: '#menu',
+    href: '/Kakaomama New Menu.pdf',
   },
   secondaryButton: {
-    text: 'Забронировать столик',
+    text: 'Связаться с нами',
     href: '#contact',
   },
 }
 
 export const about = {
-  title: 'О нашей кофейне',
-  description: 'Coffee Lab — это место, где ценят качество, уют и атмосферу. Мы используем только лучшие зерна и готовим кофе с душой. Приходите за вдохновением, встречами и, конечно, за отличным кофе!',
+  title: 'О нашем кафе',
+  description: 'Какао\'Мама — это место, где ценят качество, уют и атмосферу. Мы используем только лучшие зерна и готовим кофе с душой. Приходите за вдохновением, встречами и, конечно, за отличным кофе!',
   image: '/images/product/img-product-coffee-03.png',
 }
 
 export const product: Product = {
   title: 'Почему выбирают нас',
-  description: 'Мы создаем не просто кофе, а место, где каждый гость чувствует себя как дома. Наша миссия — подарить вам незабываемые моменты с идеальным кофе.',
+  description: 'Мы создаем не просто кофе, а место, где каждый гость чувствует себя как дома. Наша миссия — подарить вам незабываемые моменты с идеальным кофе и горячим шоколадом.',
   image: '/images/product/img-product-coffee-03.png',
   features: [
     {
@@ -50,8 +49,8 @@ export const product: Product = {
       image: '/images/product/img-product-coffee-03.png',
     },
     {
-      title: 'Свежие десерты',
-      description: 'Наши кондитеры создают восхитительные десерты каждый день. От классических пирожных до авторских сладостей — каждый десерт готовится из натуральных ингредиентов.',
+      title: 'Домашние десерты',
+      description: 'Наши десерты готовятся вручную каждый день из свежих ингредиентов. Тирамису, чизкейк, брауни и другие сладости — идеальное дополнение к вашему любимому напитку.',
       image: '/images/product/img-product-desserts-01.png',
     },
     {
@@ -130,7 +129,7 @@ export const testimonials: Testimonial[] = [
     id: 3,
     name: 'Иван Телин',
     role: 'Фрилансер',
-    content: 'В этой кофейне чувствуется забота о клиентах! Бариста очень внимательные и профессиональные. Приятно наблюдать за их работой, пока ждешь свой заказ. Отличное обслуживание!',
+    content: 'В этом кафе чувствуется забота о клиентах! Бариста очень внимательные и профессиональные. Приятно наблюдать за их работой, пока ждешь свой заказ. Отличное обслуживание!',
     rating: 5,
     image: '/images/testimonials/img-testimonial-ivan-telin-01.png',
     avatar: getAvatarUrl('Иван Телин', 'male')
@@ -193,7 +192,7 @@ export const testimonials: Testimonial[] = [
     id: 12,
     name: 'Елена Рождественская',
     role: 'Предприниматель',
-    content: 'Очень заметная и привлекательная вывеска! Пройти мимо этой кофейни невозможно. Всегда захожу, когда прохожу мимо. Входная группа создает очень гостеприимное впечатление.',
+    content: 'Очень заметная и привлекательная вывеска! Пройти мимо этого кафе невозможно. Всегда захожу, когда прохожу мимо. Входная группа создает очень гостеприимное впечатление.',
     rating: 5,
     image: '/images/testimonials/img-testimonial-elena-rozhdestvenskaya-01.png',
     avatar: getAvatarUrl('Елена Рождественская', 'female')
@@ -256,7 +255,7 @@ export const testimonials: Testimonial[] = [
     id: 23,
     name: 'Алексей Кудимов',
     role: 'Предприниматель',
-    content: 'Просторная и светлая кофейня! Даже при большом количестве людей нет ощущения тесноты. Мне нравится, как здесь организовано пространство. Уютно и комфортно.',
+    content: 'Просторное и светлое кафе! Даже при большом количестве людей нет ощущения тесноты. Мне нравится, как здесь организовано пространство. Уютно и комфортно.',
     rating: 5,
     image: '/images/testimonials/img-testimonial-aleksey-kudimov-01.png',
     avatar: getAvatarUrl('Алексей Кудимов', 'male')
@@ -265,41 +264,29 @@ export const testimonials: Testimonial[] = [
 
 export const contact: ContactSection = {
   title: 'Свяжитесь с нами',
-  description: 'Забронируйте столик, закажите доставку или задайте любой вопрос. Мы всегда рады помочь!',
-  email: 'hello@coffeelab.ru',
-  phone: '+7 (999) 123-45-67',
+  description: 'Забронируйте столик или задайте любой вопрос. Мы всегда рады помочь!',
+  phone: '+7 (8482) 20-12-21',
+  addresses: [
+    {
+      text: 'Революционная ул., 52а, Тольятти',
+      mapsUrl: 'https://maps.app.goo.gl/1kmz2JhmP2UKiWBb9'
+    },
+    {
+      text: 'Молодежный б-р, 3, Тольятти',
+      mapsUrl: 'https://maps.app.goo.gl/5MArAogfZtHF2Aiz8'
+    }
+  ]
 }
 
 export const footer: FooterData = {
-  links: [
-    {
-      title: 'Меню',
-      items: [
-        { href: '#coffee', title: 'Кофе' },
-        { href: '#tea', title: 'Чай' },
-        { href: '#desserts', title: 'Десерты' },
-        { href: '#breakfast', title: 'Завтраки' },
-      ],
-    },
-    {
-      title: 'Информация',
-      items: [
-        { href: '#about', title: 'О нас' },
-        { href: '#careers', title: 'Вакансии' },
-        { href: '#blog', title: 'Блог' },
-        { href: '#contacts', title: 'Контакты' },
-      ],
-    },
-  ],
+  links: [],
   social: [
     {
       title: 'Мы в соцсетях',
       items: [
-        { href: 'https://instagram.com', title: 'Instagram' },
-        { href: 'https://facebook.com', title: 'Facebook' },
-        { href: 'https://twitter.com', title: 'Twitter' },
+        { href: 'https://vk.com/kakaomamacafe', title: 'ВКонтакте' },
       ],
     },
   ],
-  copyright: '© 2024 Coffee Lab. Все права защищены.',
+  copyright: '© 2024 Какао\'Мама. Все права защищены.',
 } 

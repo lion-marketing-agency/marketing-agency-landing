@@ -5,46 +5,26 @@ import { footer } from '@/content'
 
 export default function Footer() {
   return (
-    <footer className="bg-background/50 border-t border-foreground/10">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {footer.links.map((section) => (
-            <div key={section.title}>
-              <h3 className="font-medium mb-4">{section.title}</h3>
-              <ul className="space-y-2">
-                {section.items.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="text-foreground/60 hover:text-foreground transition-colors"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <footer className="bg-gray-50 border-t border-gray-200">
+      <div className="container mx-auto px-4 py-6">
+        <div className="flex flex-col items-center space-y-4">
+          {/* ВКонтакте */}
+          {footer.social[0]?.items.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
+            >
+              {item.title}
+            </Link>
           ))}
-          {footer.social.map((section) => (
-            <div key={section.title}>
-              <h3 className="font-medium mb-4">{section.title}</h3>
-              <ul className="space-y-2">
-                {section.items.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="text-foreground/60 hover:text-foreground transition-colors"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="mt-12 pt-8 border-t border-foreground/10 text-center text-foreground/60">
-          {footer.copyright}
+          
+          {/* Copyright */}
+          <div className="text-center text-gray-500 text-xs">
+            {footer.copyright}
+          </div>
         </div>
       </div>
     </footer>

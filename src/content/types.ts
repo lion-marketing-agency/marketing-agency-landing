@@ -43,8 +43,11 @@ export interface Testimonial {
 export interface ContactSection {
   title: string
   description: string
-  email: string
   phone: string
+  addresses: {
+    text: string
+    mapsUrl: string
+  }[]
 }
 
 export interface FooterData {
@@ -68,6 +71,7 @@ export interface FooterData {
 export interface HeaderLink {
   title: string
   href: string
+  isExternal?: boolean
 }
 
 export interface Header {

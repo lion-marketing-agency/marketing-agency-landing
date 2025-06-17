@@ -47,6 +47,8 @@ export default function Hero() {
           >
             <Link
               href={hero.primaryButton.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition-colors"
             >
               {hero.primaryButton.text}
