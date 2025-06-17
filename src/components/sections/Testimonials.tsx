@@ -89,7 +89,7 @@ export default function Testimonials() {
                           <div className="flex items-center gap-5 mb-10">
                             <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-gray-100">
                               <Image
-                                src={testimonials[currentIndex].image}
+                                src={testimonials[currentIndex].avatar}
                                 alt={testimonials[currentIndex].name}
                                 fill
                                 className="object-cover"
@@ -104,7 +104,7 @@ export default function Testimonials() {
                                 {testimonials[currentIndex].role}
                               </p>
                               <div className="flex items-center gap-1">
-                                {[...Array(5)].map((_, i) => (
+                                {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                                   <svg
                                     key={i}
                                     className="w-5 h-5 text-yellow-400"
@@ -120,7 +120,7 @@ export default function Testimonials() {
 
                           {/* Текст отзыва */}
                           <blockquote className="text-xl md:text-2xl text-gray-700 leading-relaxed font-light">
-                            {testimonials[currentIndex].text}
+                            {testimonials[currentIndex].content}
                           </blockquote>
 
                           {/* Декоративная линия */}
@@ -131,7 +131,7 @@ export default function Testimonials() {
                       {/* Правая колонка - большое изображение */}
                       <div className="relative h-full overflow-hidden">
                         <Image
-                          src={testimonials[currentIndex].photo}
+                          src={testimonials[currentIndex].image}
                           alt={testimonials[currentIndex].name + ' — фото'}
                           fill
                           className="object-cover"

@@ -31,11 +31,13 @@ export interface Product {
 }
 
 export interface Testimonial {
+  id: number
   name: string
   role: string
-  text: string
+  content: string
+  rating: number
   image: string
-  photo: string
+  avatar: string
 }
 
 export interface ContactSection {
