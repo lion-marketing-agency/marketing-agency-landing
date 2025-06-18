@@ -51,7 +51,6 @@ export function getAvatarUrl(name: string, gender?: 'male' | 'female'): string {
   // Если пол не указан, пытаемся определить по имени
   if (!gender) {
     const femaleNames = ['анна', 'елена', 'мария', 'ольга', 'наталья', 'ирина', 'светлана', 'юлия', 'татьяна', 'екатерина']
-    const maleNames = ['михаил', 'александр', 'дмитрий', 'сергей', 'андрей', 'владимир', 'николай', 'иван', 'петр', 'алексей']
     
     const normalizedName = name.toLowerCase().split(' ')[0] // берем первое имя
     gender = femaleNames.includes(normalizedName) ? 'female' : 'male'

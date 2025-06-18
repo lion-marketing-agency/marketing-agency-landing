@@ -1,13 +1,12 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { testimonials } from '@/content'
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
@@ -81,7 +80,7 @@ export default function Testimonials() {
                       <div className="p-10 md:p-16 flex flex-col justify-center relative">
                         {/* Декоративная кавычка */}
                         <div className="absolute top-8 left-8 text-6xl text-gray-200 font-serif">
-                          "
+                          &ldquo;
                         </div>
                         
                         <div className="relative z-10">
