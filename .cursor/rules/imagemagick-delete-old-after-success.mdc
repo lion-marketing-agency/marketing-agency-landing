@@ -1,0 +1,6 @@
+---
+description: Delete original images after successful conversion or processing.
+globs: 
+alwaysApply: false
+---
+After a successful image conversion or modification using ImageMagick, always delete the original image to avoid duplication and save disk space.

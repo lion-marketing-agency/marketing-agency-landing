@@ -1,0 +1,6 @@
+---
+description: Fix all warnings and errors immediately before continuing work.
+globs: 
+alwaysApply: false
+---
+All compiler, build, and runtime warnings or errors must be resolved immediately. Do not commit or continue work until the project is in a clean state with zero warnings or errors.

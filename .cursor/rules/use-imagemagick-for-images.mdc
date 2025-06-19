@@ -1,0 +1,6 @@
+---
+description: Use ImageMagick with the magick CLI for all image-related operations.
+globs: 
+alwaysApply: false
+---
+Always use ImageMagick for any image processing tasks such as format conversion, resizing, compression, or optimization. For ImageMagick version 7 or later, use the "magick" CLI tool instead of the deprecated "convert" command.

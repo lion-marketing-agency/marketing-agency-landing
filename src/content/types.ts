@@ -17,37 +17,75 @@ export interface HeroSection {
   secondaryButton: Button
 }
 
-export interface Feature {
+export interface AboutFeature {
   title: string
   description: string
-  image: string
+  icon: string
 }
 
-export interface Product {
+export interface AboutSection {
   title: string
   description: string
-  image: string
-  features: Feature[]
+  features: AboutFeature[]
 }
 
-export interface Testimonial {
+export interface PortfolioProject {
   id: number
-  name: string
-  role: string
-  content: string
-  rating: number
+  title: string
+  description: string
   image: string
-  avatar: string
+  link: string
+  category: string
+  result: string
+}
+
+export interface Portfolio {
+  title: string
+  description: string
+  projects: PortfolioProject[]
+}
+
+export interface ServiceExample {
+  title: string
+  link: string
+  image: string
+}
+
+export interface Service {
+  id: number
+  title: string
+  description: string
+  price: string
+  duration: string
+  features: string[]
+  example: ServiceExample
+  ctaText: string
+  ctaMessage: string
+  icon: string
+}
+
+export interface CTA {
+  title: string
+  description: string
+  buttonText: string
+  buttonLink: string
+}
+
+export interface SocialLink {
+  name: string
+  link: string
+  icon: string
 }
 
 export interface ContactSection {
   title: string
   description: string
-  phone: string
-  addresses: {
-    text: string
-    mapsUrl: string
-  }[]
+  telegram: {
+    username: string
+    link: string
+  }
+  email: string
+  social: SocialLink[]
 }
 
 export interface FooterData {

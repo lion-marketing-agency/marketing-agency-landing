@@ -22,8 +22,8 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-lg' 
-          : 'bg-black/20 backdrop-blur-sm'
+          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200' 
+          : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -106,7 +106,7 @@ export default function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             className={`md:hidden backdrop-blur-md ${
-              isScrolled ? 'bg-white/90' : 'bg-black/80'
+              isScrolled ? 'bg-white/95' : 'bg-gray-900/95'
             }`}
           >
             <nav className="container mx-auto px-4 py-4 space-y-4">

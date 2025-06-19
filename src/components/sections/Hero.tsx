@@ -18,7 +18,7 @@ export default function Hero() {
           priority
           quality={100}
         />
-        <div className="absolute inset-0 bg-black/30" /> {/* Уменьшенное затемнение для лучшей видимости фона */}
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -27,7 +27,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight"
           >
             {hero.title}
           </motion.h1>
@@ -35,7 +35,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-200 mb-8"
+            className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             {hero.subtitle}
           </motion.p>
@@ -47,15 +47,13 @@ export default function Hero() {
           >
             <Link
               href={hero.primaryButton.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition-colors"
+              className="px-8 py-4 bg-white text-gray-900 font-medium rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
             >
               {hero.primaryButton.text}
             </Link>
             <Link
               href={hero.secondaryButton.href}
-              className="px-8 py-3 border border-white text-white font-medium rounded-lg hover:bg-white/10 transition-colors"
+              className="px-8 py-4 border-2 border-white text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300 hover:scale-105"
             >
               {hero.secondaryButton.text}
             </Link>

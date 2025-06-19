@@ -13,8 +13,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Какао'Мама | Уютное кафе в центре города",
-  description: "Откройте для себя мир изысканного кофе и горячего шоколада в нашем уютном кафе. Свежая обжарка, авторские напитки и домашняя выпечка.",
+  title: "Lion.dev | Создаём сайты и боты, которые продают",
+  description: "Студия разработки сайтов и Telegram-ботов. От лендинга до интернет-магазина за 3-7 дней. Реальный результат для вашего бизнеса.",
+  keywords: ["разработка сайтов", "лендинги", "telegram боты", "веб-разработка", "lion.dev", "студия"],
+  authors: [{ name: "Lion.dev" }],
+  creator: "Lion.dev",
+  publisher: "Lion.dev",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    url: "https://lion.dev",
+    title: "Lion.dev | Создаём сайты и боты, которые продают",
+    description: "Студия разработки сайтов и Telegram-ботов. От лендинга до интернет-магазина за 3-7 дней.",
+    siteName: "Lion.dev",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lion.dev | Создаём сайты и боты, которые продают",
+    description: "Студия разработки сайтов и Telegram-ботов. От лендинга до интернет-магазина за 3-7 дней.",
+  },
   icons: {
     icon: [
       { url: '/logo/favicon-16x16.png', sizes: '16x16', type: 'image/png' },

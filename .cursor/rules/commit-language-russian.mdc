@@ -1,0 +1,6 @@
+---
+description: All commit messages must be written in Russian.
+globs: 
+alwaysApply: false
+---
+All Git commit messages must be written in Russian. Avoid using English or mixed-language messages. Keep messages clear and relevant to the changes introduced.
