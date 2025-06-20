@@ -1,6 +1,6 @@
 ---
-description: Use Russian in all comments, documentation, and team communication.
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 All comments, documentation, and communication with collaborators must be in Russian. Do not use English unless referencing official documentation or code where translation would lead to loss of meaning.

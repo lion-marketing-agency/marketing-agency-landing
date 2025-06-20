@@ -84,7 +84,6 @@ export interface ContactSection {
     username: string
     link: string
   }
-  email: string
   social: SocialLink[]
 }
 

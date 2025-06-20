@@ -1,90 +1,89 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { about } from '@/content'
-import { HiOutlineLightningBolt, HiOutlineChartBar, HiOutlineCube, HiOutlineCash } from 'react-icons/hi'
+import {
+  HiOutlineChartBar,
+  HiOutlineCube,
+  HiOutlineLightningBolt,
+  HiOutlineShieldCheck,
+} from 'react-icons/hi'
 
-const getIconComponent = (iconName: string) => {
-  const icons = {
-    'speed': HiOutlineLightningBolt,
-    'design': HiOutlineChartBar,
-    'business': HiOutlineCube,
-    'price': HiOutlineCash,
-  }
-  const IconComponent = icons[iconName as keyof typeof icons]
-  return IconComponent ? <IconComponent className="w-full h-full" /> : null
+const iconsMap: { [key: string]: React.ElementType } = {
+  design: HiOutlineChartBar,
+  business: HiOutlineCube,
+  speed: HiOutlineLightningBolt,
+  price: HiOutlineShieldCheck,
 }
 
 export default function About() {
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50])
-
   return (
-    <section id="about" className="relative min-h-screen flex items-center bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
-      {/* Декоративные элементы */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          style={{ y }}
-          className="absolute -right-1/4 top-0 w-1/2 h-1/2"
+    <section id="about" className="overflow-hidden bg-white py-24 sm:py-32">
+      <div className="container mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Заголовок секции */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-3xl text-center"
         >
-          <div className="w-full h-full bg-gradient-to-br from-primary-100/20 to-transparent rounded-full blur-3xl transform rotate-12" />
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            {about.title}
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-gray-600"
+             dangerouslySetInnerHTML={{ __html: about.description }}
+          />
         </motion.div>
-        <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 50]) }}
-          className="absolute -left-1/4 bottom-0 w-1/2 h-1/2"
-        >
-          <div className="w-full h-full bg-gradient-to-tr from-accent-100/20 to-transparent rounded-full blur-3xl transform -rotate-12" />
-        </motion.div>
-      </div>
 
-      <div className="container mx-auto px-6 py-32 relative">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-24"
-          >
-            <h2 className="text-5xl md:text-6xl font-light mb-8 tracking-tight bg-gradient-to-r from-gray-900 via-primary-800 to-gray-900 bg-clip-text text-transparent">
-              {about.title}
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              {about.description}
-            </p>
-          </motion.div>
+        {/* Ось подхода (Timeline) */}
+        <div className="relative mt-24">
+          {/* Вертикальная линия с градиентом */}
+          <div
+            className="absolute left-1/2 top-4 bottom-4 ml-[-1px] w-0.5 bg-gradient-to-b from-transparent via-gray-200 to-transparent"
+            aria-hidden="true"
+          />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {about.features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative group"
-              >
-                <div className="relative p-8 rounded-2xl bg-white/70 backdrop-blur-sm border border-gray-100 shadow-[0_0_50px_-12px_rgb(0,0,0,0.05)] hover:shadow-[0_0_50px_-12px_rgb(0,0,0,0.15)] transition-all duration-500">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-50 to-accent-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative flex items-start gap-6">
-                    <div className="w-16 h-16 shrink-0 flex items-center justify-center rounded-xl bg-gradient-to-br from-primary-100 to-accent-100 text-primary-600 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-                      {getIconComponent(feature.icon)}
+          <div className="space-y-20">
+            {about.features.map((feature, index) => {
+              const isEven = index % 2 === 0
+              const IconComponent = iconsMap[feature.icon]
+              return (
+                <div
+                  key={feature.title}
+                  className="relative flex items-center"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.2 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    className="absolute left-1/2 z-10 flex h-14 w-14 -translate-x-1/2 items-center justify-center rounded-full bg-white shadow-md ring-8 ring-white"
+                  >
+                    <IconComponent className="h-7 w-7 text-blue-600" />
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    className={`mx-auto max-w-md text-center md:mx-0 md:max-w-none md:w-1/2 ${
+                      isEven
+                        ? 'md:pr-14 md:text-right'
+                        : 'md:ml-auto md:pl-14 md:text-left'
+                    }`}
+                  >
+                    <h3 className="text-3xl font-bold leading-9 text-gray-900">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-3 text-lg leading-7 text-gray-700"
+                       dangerouslySetInnerHTML={{ __html: feature.description }}
+                    />
+                  </motion.div>
                 </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-medium mb-3 text-gray-900 group-hover:text-primary-700 transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                      <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                  {feature.description}
-                </p>
-                    </div>
-                  </div>
-                  
-                  {/* Декоративная линия */}
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 group-hover:w-full transition-all duration-500" />
-                </div>
-              </motion.div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>
