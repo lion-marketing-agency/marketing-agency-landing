@@ -31,11 +31,11 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-light mb-8 tracking-tight text-gray-900">
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-8">
               Услуги и тарифы
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-              Выберите подходящий формат для вашего проекта
+              Выберите подходящее решение для вашей задачи
             </p>
           </motion.div>
 
@@ -47,11 +47,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex flex-col h-full p-8 rounded-3xl border-2 transition-all duration-300 shadow-sm bg-white group ${
-                  service.title === 'Индивидуальный проект'
-                    ? 'border-gray-900 shadow-lg ring-2 ring-gray-900'
-                    : 'border-gray-200 hover:border-gray-900 hover:shadow-lg'
-                }`}
+                className={`relative flex flex-col h-full p-8 rounded-3xl border-2 transition-all duration-300 shadow-sm bg-white group border-gray-200 hover:border-gray-900 hover:shadow-lg`}
               >
                 <div className="flex items-center gap-4 mb-6">
                   <span className="text-4xl select-none">{service.icon}</span>
@@ -80,11 +76,7 @@ export default function Services() {
                 </div>
                 <button
                   onClick={() => handleTelegramClick(service.ctaMessage)}
-                  className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 mt-auto text-base shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 ${
-                    service.title === 'Индивидуальный проект'
-                      ? 'bg-gray-900 text-white hover:bg-gray-800'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-900 hover:text-white'
-                  }`}
+                  className="w-full py-3 rounded-xl font-semibold transition-all duration-300 mt-auto text-base shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 bg-gray-100 text-gray-900 hover:bg-gray-900 hover:text-white"
                 >
                   {service.ctaText}
                 </button>

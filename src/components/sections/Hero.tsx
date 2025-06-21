@@ -1,33 +1,19 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { hero } from '@/content'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Фоновое изображение */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={hero.backgroundImage || "/images/hero/img-hero-main-bg.png"}
-          alt="Hero background"
-          fill
-          className="object-cover"
-          priority
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-7xl mx-auto text-center">
+    <section className="relative flex min-h-screen items-center justify-center bg-white">
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="mx-auto max-w-7xl text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 tracking-tight"
+            className="mb-8 font-display text-6xl font-bold tracking-tight text-gray-900 md:text-8xl"
           >
             {hero.title}
           </motion.h1>
@@ -35,7 +21,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="mb-10 text-xl text-gray-600 md:text-2xl"
           >
             {hero.subtitle}
           </motion.p>
@@ -43,17 +29,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             <Link
               href={hero.primaryButton.href}
-              className="px-8 py-4 bg-white text-gray-900 font-medium rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
+              className="w-full rounded-full bg-gray-900 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-800 sm:w-auto"
             >
               {hero.primaryButton.text}
             </Link>
             <Link
               href={hero.secondaryButton.href}
-              className="px-8 py-4 border-2 border-white text-white font-medium rounded-xl hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              className="w-full rounded-full border-2 border-gray-300 px-8 py-4 font-semibold text-gray-800 transition-all duration-300 hover:scale-105 hover:border-gray-900 hover:text-gray-900 sm:w-auto"
             >
               {hero.secondaryButton.text}
             </Link>
